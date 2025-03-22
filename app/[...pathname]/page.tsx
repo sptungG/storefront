@@ -20,7 +20,7 @@ export default function TemplatePage({ params }: { params: any }) {
   if (foundTemplate.siteUrl) {
     return (
       <div className="fixed inset-0 w-full h-full bg-background flex items-center justify-center">
-        <div className="text-center flex flex-col">
+        <div className="text-center flex flex-col items-center">
           <a href={foundTemplate.siteUrl} rel="noopener noreferrer" target="_blank" className="mb-4">
             Chuyển đến trang <u>{foundTemplate.siteUrl}</u>...
           </a>
