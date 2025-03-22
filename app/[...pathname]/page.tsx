@@ -50,7 +50,7 @@ export default function TemplatePage({ params }: { params: any }) {
           })}
           href="/"
         >
-          ← Back
+          ← Trở lại
         </Link>
       </div>
       {!!foundTemplate?.demoUrl && (
