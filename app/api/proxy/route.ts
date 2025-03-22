@@ -19,6 +19,7 @@ export async function GET(request: Request) {
         .popup-sapo.active,
         .messenger-live-face,
         .copyright,
+        .footer-copyright,
         #cookie-consent {
           display: none !important;
         }
