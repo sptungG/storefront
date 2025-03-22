@@ -1,13 +1,13 @@
 "use client";
 
-import { use } from "react";
-import { notFound } from "next/navigation";
+import { use, useEffect } from "react";
+import { notFound, useRouter } from "next/navigation";
 import { Link } from "@heroui/link";
 import { button as buttonStyles } from "@heroui/theme";
-
 import { templates } from "@/config/templates";
 
 export default function TemplatePage({ params }: { params: any }) {
+  const router = useRouter();
   const { pathname } = use<{ pathname: string[] }>(params);
   const foundTemplate = templates.find((t) => t.id === pathname[0]);
 
@@ -16,6 +16,28 @@ export default function TemplatePage({ params }: { params: any }) {
   }
 
   const proxyUrl = `/api/proxy?url=${encodeURIComponent(foundTemplate.demoUrl)}`;
+
+  if (foundTemplate.siteUrl) {
+    return (
+      <div className="fixed inset-0 w-full h-full bg-background flex items-center justify-center">
+        <div className="text-center flex flex-col">
+          <a href={foundTemplate.siteUrl} rel="noopener noreferrer" target="_blank" className="mb-4">
+            Chuyển đến trang <u>{foundTemplate.siteUrl}</u>...
+          </a>
+          <Link
+            href="/"
+            className={buttonStyles({
+              color: "primary",
+              variant: "solid",
+              size: "md",
+            })}
+          >
+            ← Trở lại trang chủ
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 w-full h-full bg-background">
@@ -28,7 +50,7 @@ export default function TemplatePage({ params }: { params: any }) {
           })}
           href="/"
         >
-          ← Trở lại
+          ← Back
         </Link>
       </div>
       {!!foundTemplate?.demoUrl && (
