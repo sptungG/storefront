@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.iframe-preview {
+  .header,
+  .footer,
+  .navigation-bar,
+  .cookie-banner,
+  .popup-modal,
+  .advertisement,
+  .chat-widget,
+  .newsletter-popup,
+  .social-share-buttons,
+  .floating-buttons {
+    display: none !important;
+  }
+}
+
+/* Optional: Hide scrollbars but keep functionality */
+.iframe-preview {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.iframe-preview::-webkit-scrollbar {
+  display: none;
+}
